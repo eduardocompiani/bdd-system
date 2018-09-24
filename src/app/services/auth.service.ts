@@ -4,7 +4,8 @@ import {SigninFormInterface} from '../interfaces/signin-form-interface';
 import {AngularFireAuth} from 'angularfire2/auth';
 import {User} from '../model/user';
 import {AngularFirestore, AngularFirestoreDocument} from 'angularfire2/firestore';
-import {Observable} from 'rxjs';
+import {Observable, of} from 'rxjs';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -13,16 +14,20 @@ export class AuthService {
   isLoggedIn: boolean;
   loggedUserDoc: AngularFirestoreDocument<User>;
   loggedUser: Observable<User>;
+  isLoggedIn$: Observable<boolean>;
 
-  constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore) {
+  constructor(private afAuth: AngularFireAuth,
+              private afs: AngularFirestore,
+              private router: Router) {
     this.afAuth.authState.subscribe(user => {
       if (user) {
         this.loggedUserDoc = this.afs.doc('users/' + user.uid);
         this.loggedUser = this.loggedUserDoc.valueChanges();
-        console.log(this.loggedUser);
         this.isLoggedIn = true;
+        this.isLoggedIn$ = of(true);
       } else {
         this.isLoggedIn = false;
+        this.isLoggedIn$ = of(false);
       }
     });
   }
@@ -30,27 +35,35 @@ export class AuthService {
   async signupUser( user: SignupFormInterface) {
     const newAccount: any = await this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password)
       .then( response => response.user)
-      .catch(err => console.log('error while creating new user', err));
+      .catch((err) => {
+        console.log('error while creating new user', err);
+        return false;
+      });
 
-    this.afs.collection('users').doc(newAccount.uid).set({
-      'name': user.name,
-      'email': user.email,
-      'uid': newAccount.uid,
-      'roles': {
-        'canManageFolders': false,
-        'canManageScenarios': false,
-        'canManageTeam': false
-      }
-    });
+    if (newAccount) {
+      this.afs.collection('users').doc(newAccount.uid).set({
+        'name': user.name,
+        'email': user.email,
+        'uid': newAccount.uid,
+        'roles': {
+          'canManageFolders': false,
+          'canManageScenarios': false,
+          'canManageTeam': false
+        }
+      });
+
+      this.router.navigate(['/']);
+    }
   }
 
   signinUser(user: SigninFormInterface) {
     this.afAuth.auth.signInWithEmailAndPassword(user.email, user.password)
-      .then( response => console.log('Logged in', response, response.user.uid))
+      .then( (response) => this.router.navigate(['/']))
       .catch(err => console.log('Error while trying to login', err));
   }
 
   logout() {
     this.afAuth.auth.signOut();
+    this.router.navigate(['/']);
   }
 }

@@ -14,13 +14,19 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../environments/environment';
+import { MainNavComponent } from './components/main-nav/main-nav.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
+import { TeamUserListComponent } from './components/main/team/team-user-list/team-user-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
     SignupComponent,
-    SigninComponent
+    SigninComponent,
+    MainNavComponent,
+    TeamUserListComponent
   ],
   imports: [
     BrowserModule,
@@ -32,6 +38,12 @@ import { environment } from '../environments/environment';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule.enablePersistence(),
     AngularFireAuthModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
