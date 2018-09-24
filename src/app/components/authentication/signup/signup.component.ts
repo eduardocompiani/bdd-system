@@ -12,15 +12,16 @@ export class SignupComponent implements OnInit {
   signupForm: FormGroup;
   hide = true;
 
-  constructor(private authService: AuthService , fb: FormBuilder) {
-    this.signupForm = fb.group({
+  constructor(private authService: AuthService , private fb: FormBuilder) {
+
+  }
+
+  ngOnInit() {
+    this.signupForm = this.fb.group({
       'name': [null, Validators.required],
       'email': [null, Validators.compose([Validators.required, Validators.email])],
       'password': [null, Validators.compose([Validators.required, Validators.minLength(6)])]
     });
-  }
-
-  ngOnInit() {
   }
 
   createAccount(user: SignupFormInterface) {
