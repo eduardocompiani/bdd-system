@@ -13,11 +13,11 @@
         <button mat-menu-item (click)="drawer.toggle()" routerLink="/team">Manage</button>
         <button mat-menu-item (click)="drawer.toggle()">Invite</button>
       </mat-menu>
-      <a mat-list-item (click)="drawer.toggle()">Folders</a>
+      <a mat-list-item (click)="drawer.toggle()" routerLink="/folder">Folders</a>
       <a mat-list-item (click)="drawer.toggle()">Scenario</a>
       <a mat-list-item (click)="onLogout(drawer)">Log Out</a>
     </mat-nav-list>
-    <mat-nav-list *ngIf="!auth.isLoggedIn" (click)="drawer.toggle()">
+    <mat-nav-list *ngIf="!auth.isLoggedIn">
       <a mat-list-item (click)="drawer.toggle()" routerLink="/signup">Sign up</a>
       <a mat-list-item (click)="drawer.toggle()" routerLink="/signin">Sign in</a>
     </mat-nav-list>

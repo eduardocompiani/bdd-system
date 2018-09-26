@@ -18,6 +18,7 @@ import { MainNavComponent } from './components/main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
 import { TeamUserListComponent } from './components/main/team/team-user-list/team-user-list.component';
+import { FolderListComponent } from './components/main/folder/folder-list/folder-list.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { TeamUserListComponent } from './components/main/team/team-user-list/tea
     SignupComponent,
     SigninComponent,
     MainNavComponent,
-    TeamUserListComponent
+    TeamUserListComponent,
+    FolderListComponent
   ],
   imports: [
     BrowserModule,

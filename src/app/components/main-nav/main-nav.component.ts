@@ -21,7 +21,7 @@ export class MainNavComponent {
               private auth: AuthService) {}
 
     onLogout(drawer: any) {
-      this.auth.logout();
       drawer.toggle();
+    this.auth.logout()
     }
   }

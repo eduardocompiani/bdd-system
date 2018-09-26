@@ -5,6 +5,7 @@ import {SigninComponent} from './components/authentication/signin/signin.compone
 import {MainComponent} from './components/main/main.component';
 import {AuthGuard} from './guards/auth.guard';
 import {TeamUserListComponent} from './components/main/team/team-user-list/team-user-list.component';
+import {FolderListComponent} from './components/main/folder/folder-list/folder-list.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
       }, {
         path: 'signin',
         component: SigninComponent
+      }, {
+        path: 'folder',
+        component: FolderListComponent,
+        canActivate: [AuthGuard]
       }
     ]
   }
