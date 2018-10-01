@@ -1,0 +1,13 @@
+<form [formGroup]="folderForm" (ngSubmit)="emitFolder(folderForm.controls['name'].value)">
+  <mat-card class="container">
+    <!-- NAME -->
+    <mat-form-field>
+      <input matInput placeholder="Name" [formControl]="folderForm.controls['name']" [value]="folder.name">
+      <mat-error *ngIf="folderForm.controls['name'].hasError('required')">
+        Name is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <!-- CREATE BUTTON -->
+    <button type="submit" [disabled]="!folderForm.valid" mat-raised-button color="primary">Save</button>
+  </mat-card>
+</form>

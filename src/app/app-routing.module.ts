@@ -6,6 +6,8 @@ import {MainComponent} from './components/main/main.component';
 import {AuthGuard} from './guards/auth.guard';
 import {TeamUserListComponent} from './components/main/team/team-user-list/team-user-list.component';
 import {FolderListComponent} from './components/main/folder/folder-list/folder-list.component';
+import {FolderCreateComponent} from './components/main/folder/folder-create/folder-create.component';
+import {FolderEditComponent} from './components/main/folder/folder-edit/folder-edit.component';
 
 const routes: Routes = [
   {
@@ -24,10 +26,25 @@ const routes: Routes = [
         component: SigninComponent
       }, {
         path: 'folder',
-        component: FolderListComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
+        children: [
+          {
+            path: '',
+            component: FolderListComponent
+          }, {
+            path: 'create',
+            component: FolderCreateComponent
+          }, {
+            path: 'edit/:id',
+            component: FolderEditComponent
+          }
+        ]
       }
     ]
+  }, {
+    path: '**',
+    redirectTo: '',
+    pathMatch: 'full'
   }
 ];
 

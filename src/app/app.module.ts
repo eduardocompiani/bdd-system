@@ -19,6 +19,9 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
 import { TeamUserListComponent } from './components/main/team/team-user-list/team-user-list.component';
 import { FolderListComponent } from './components/main/folder/folder-list/folder-list.component';
+import { FolderFormComponent } from './components/main/folder/folder-form/folder-form.component';
+import { FolderEditComponent } from './components/main/folder/folder-edit/folder-edit.component';
+import { FolderCreateComponent } from './components/main/folder/folder-create/folder-create.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,10 @@ import { FolderListComponent } from './components/main/folder/folder-list/folder
     SigninComponent,
     MainNavComponent,
     TeamUserListComponent,
-    FolderListComponent
+    FolderListComponent,
+    FolderFormComponent,
+    FolderEditComponent,
+    FolderCreateComponent
   ],
   imports: [
     BrowserModule,
