@@ -11,7 +11,7 @@
     <!-- EMAIL -->
     <mat-form-field>
       <input matInput placeholder="Email" [formControl]="signupForm.controls['email']">
-      <mat-error *ngIf="signupForm.controls['email'].hasError('email') && !signinForm.controls['email'].hasError('required')">
+      <mat-error *ngIf="signupForm.controls['email'].hasError('email') && !signupForm.controls['email'].hasError('required')">
         Please enter a valid email address
       </mat-error>
       <mat-error *ngIf="signupForm.controls['email'].hasError('required')">
