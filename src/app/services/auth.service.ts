@@ -6,6 +6,8 @@ import {User} from '../model/user';
 import {AngularFirestore, AngularFirestoreDocument} from 'angularfire2/firestore';
 import {Observable, of} from 'rxjs';
 import {Router} from '@angular/router';
+import {map} from 'rxjs/operators';
+import {UserInterface} from '../interfaces/user-interface';
 
 @Injectable({
   providedIn: 'root'
@@ -44,7 +46,7 @@ export class AuthService {
       this.afs.collection('users').doc(newAccount.uid).set({
         'name': user.name,
         'email': user.email,
-        'uid': newAccount.uid,
+        'oid': newAccount.uid,
         'roles': {
           'canManageFolders': false,
           'canManageScenarios': false,

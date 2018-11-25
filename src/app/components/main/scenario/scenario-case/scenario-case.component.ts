@@ -11,6 +11,7 @@ export class ScenarioCaseComponent implements OnInit {
   panelOpenState: boolean;
 
   @Input() index: number;
+  @Input() canEdit: boolean;
   @Input() scenarioCase: ScenarioCaseInterface;
   @Output() onDelete = new EventEmitter();
 

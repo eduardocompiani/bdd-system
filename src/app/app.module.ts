@@ -27,6 +27,11 @@ import { ScenarioCreateComponent } from './components/main/scenario/scenario-cre
 import { ScenarioEditComponent } from './components/main/scenario/scenario-edit/scenario-edit.component';
 import { ScenarioListComponent } from './components/main/scenario/scenario-list/scenario-list.component';
 import { ScenarioFormComponent } from './components/main/scenario/scenario-form/scenario-form.component';
+import { ListComponent } from './components/common/list/list.component';
+import { ScenarioViewComponent } from './components/main/scenario/scenario-view/scenario-view.component';
+import { UserEditComponent } from './components/main/team/user-edit/user-edit.component';
+import { UserViewComponent } from './components/main/team/user-view/user-view.component';
+import { UserFormComponent } from './components/main/team/user-form/user-form.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +49,12 @@ import { ScenarioFormComponent } from './components/main/scenario/scenario-form/
     ScenarioCreateComponent,
     ScenarioEditComponent,
     ScenarioListComponent,
-    ScenarioFormComponent
+    ScenarioFormComponent,
+    ListComponent,
+    ScenarioViewComponent,
+    UserEditComponent,
+    UserViewComponent,
+    UserFormComponent
   ],
   imports: [
     BrowserModule,

@@ -11,6 +11,7 @@ import {FolderInterface} from '../../../../interfaces/folder-interface';
 export class FolderListComponent implements OnInit {
 
   folders: any;
+  name = 'name';
 
   constructor(private router: Router,
               private folderService: FolderService) { }

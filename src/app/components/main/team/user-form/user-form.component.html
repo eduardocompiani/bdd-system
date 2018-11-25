@@ -1,0 +1,40 @@
+<mat-form-field>
+  <input
+    matInput
+    placeholder="Name"
+    [(ngModel)]="user.name"
+    [disabled]="!editable"
+  >
+</mat-form-field>
+
+<mat-form-field>
+  <input
+    matInput
+    placeholder="Email"
+    [(ngModel)]="user.email"
+    [disabled]="true"
+  >
+</mat-form-field>
+
+<mat-slide-toggle
+  [(ngModel)]="user.roles.canManageTeam"
+  [disabled]="!editable"
+>
+  Can manage team
+</mat-slide-toggle>
+
+<mat-slide-toggle
+  [(ngModel)]="user.roles.canManageFolders"
+  [disabled]="!editable"
+>
+  Can manage folders
+</mat-slide-toggle>
+
+<mat-slide-toggle
+  [(ngModel)]="user.roles.canManageScenarios"
+  [disabled]="!editable"
+>
+  Can manage scenarios
+</mat-slide-toggle>
+
+<button *ngIf="editable" type="submit" mat-raised-button color="primary" (click)="emitSave()">Save</button>

@@ -1,3 +1,10 @@
-<p>
-  team-user-list works!
-</p>
+<mat-card class="container">
+  <app-list
+    [list]="users"
+    [name]="name"
+    [canManage]="(canManage | async)?.roles?.canManageTeam"
+    (onEdit)="edit($event)"
+    (onView)="view($event)"
+    [canDelete]="false"
+  ></app-list>
+</mat-card>

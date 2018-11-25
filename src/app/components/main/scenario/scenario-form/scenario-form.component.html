@@ -1,9 +1,9 @@
 <mat-form-field>
-  <textarea matInput placeholder="Description" [(ngModel)]="scenario.description"></textarea>
+  <textarea matInput placeholder="Description" [(ngModel)]="scenario.description" [disabled]="!editable"></textarea>
 </mat-form-field>
 
 <mat-form-field>
-  <mat-select placeholder="Folder" [(value)]="scenario.folder">
+  <mat-select placeholder="Folder" [(value)]="scenario.folder" [disabled]="!editable">
     <mat-option *ngFor="let folder of folders | async" [value]="folder.oid">
       {{folder.name}}
     </mat-option>
@@ -11,7 +11,13 @@
 </mat-form-field>
 
 <mat-accordion>
-  <app-scenario-case *ngFor="let case of scenario.cases; let i = index" [index]="i + 1" [(scenarioCase)]="scenario.cases[i]" (onDelete)="deleteCase($event)"></app-scenario-case>
+  <app-scenario-case
+    *ngFor="let case of scenario.cases; let i = index"
+    [index]="i + 1"
+    [(scenarioCase)]="scenario.cases[i]"
+    (onDelete)="deleteCase($event)"
+    [canEdit]="editable"
+  ></app-scenario-case>
 </mat-accordion>
 
 <button *ngIf="editable" type="button" mat-raised-button color="primary" (click)="addCase()">New case</button>

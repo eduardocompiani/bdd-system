@@ -6,18 +6,18 @@
   </mat-expansion-panel-header>
 
   <mat-form-field>
-    <textarea matInput placeholder="Given" [(ngModel)]="scenarioCase.testGiven"></textarea>
+    <textarea matInput placeholder="Given" [(ngModel)]="scenarioCase.testGiven" [disabled]="!canEdit"></textarea>
   </mat-form-field>
 
   <mat-form-field>
-    <textarea matInput placeholder="When" [(ngModel)]="scenarioCase.testWhen"></textarea>
+    <textarea matInput placeholder="When" [(ngModel)]="scenarioCase.testWhen" [disabled]="!canEdit"></textarea>
   </mat-form-field>
 
   <mat-form-field>
-    <textarea matInput placeholder="Then" [(ngModel)]="scenarioCase.testThen"></textarea>
+    <textarea matInput placeholder="Then" [(ngModel)]="scenarioCase.testThen" [disabled]="!canEdit"></textarea>
   </mat-form-field>
 
-  <mat-action-row>
+  <mat-action-row *ngIf="canEdit">
     <button mat-button color="warn" (click)="senDeleteAction()">Delete this case</button>
   </mat-action-row>
 

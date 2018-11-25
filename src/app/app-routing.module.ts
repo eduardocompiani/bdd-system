@@ -11,6 +11,9 @@ import {FolderEditComponent} from './components/main/folder/folder-edit/folder-e
 import {ScenarioListComponent} from './components/main/scenario/scenario-list/scenario-list.component';
 import {ScenarioEditComponent} from './components/main/scenario/scenario-edit/scenario-edit.component';
 import {ScenarioCreateComponent} from './components/main/scenario/scenario-create/scenario-create.component';
+import {ScenarioViewComponent} from './components/main/scenario/scenario-view/scenario-view.component';
+import {UserEditComponent} from './components/main/team/user-edit/user-edit.component';
+import {UserViewComponent} from './components/main/team/user-view/user-view.component';
 
 const routes: Routes = [
   {
@@ -19,8 +22,19 @@ const routes: Routes = [
     children: [
       {
         path: 'team',
-        component: TeamUserListComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
+        children: [
+          {
+            path: '',
+            component: TeamUserListComponent
+          }, {
+            path: 'edit/:id',
+            component: UserEditComponent
+          }, {
+            path: 'view/:id',
+            component: UserViewComponent
+          }
+        ]
       }, {
         path: 'signup',
         component: SignupComponent
@@ -54,7 +68,10 @@ const routes: Routes = [
             component: ScenarioCreateComponent
           }, {
             path: 'edit/:id',
-            component: FolderEditComponent
+            component: ScenarioEditComponent
+          }, {
+            path: 'view/:id',
+            component: ScenarioViewComponent
           }
         ]
       }

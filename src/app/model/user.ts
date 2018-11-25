@@ -5,12 +5,12 @@ export class User implements UserInterface {
   email: string;
   name: string;
   roles: Role;
-  uid: string;
+  oid: string;
 
   constructor(user: UserInterface) {
     this.email = user.email;
     this.name = user.name;
     this.roles = user.roles;
-    this.uid = user.uid;
+    this.oid = user.oid;
   }
 }

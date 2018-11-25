@@ -1,3 +1,3 @@
-<p>
-  scenario-edit works!
-</p>
+<mat-card class="container">
+  <app-scenario-form (onSave)="saveScenario($event)" [editable]="true" [scenario]="scenario"></app-scenario-form>
+</mat-card>

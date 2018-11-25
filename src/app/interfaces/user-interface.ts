@@ -1,7 +1,7 @@
 import {RoleInterface} from './role-interface';
 
 export interface UserInterface {
-  uid: string;
+  oid: string;
   name: string;
   email: string;
   roles?: RoleInterface;
