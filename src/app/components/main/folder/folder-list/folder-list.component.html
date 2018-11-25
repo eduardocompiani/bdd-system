@@ -1,5 +1,5 @@
 <mat-card class="container">
-  <button mat-raised-button color="primary" (click)="createNewFolder()">Incluir</button>
+  <button mat-raised-button color="primary" (click)="createNewFolder()">New</button>
   <mat-list>
     <mat-list-item *ngFor="let folder of folders | async">
       <a mat-line>{{ folder.name }}</a>

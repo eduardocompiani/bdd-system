@@ -1,0 +1,18 @@
+<mat-form-field>
+  <textarea matInput placeholder="Description" [(ngModel)]="scenario.description"></textarea>
+</mat-form-field>
+
+<mat-form-field>
+  <mat-select placeholder="Folder">
+    <mat-option *ngFor="let folder of folders | async" [value]="folder.oid">
+      {{folder.name}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-accordion>
+  <app-scenario-case *ngFor="let case of scenario.cases; let i = index" [index]="i + 1" [(scenarioCase)]="scenario.cases[i]" (onDelete)="deleteCase($event)"></app-scenario-case>
+</mat-accordion>
+
+<button type="button" mat-raised-button color="primary" (click)="addCase()">New case</button>
+<button type="submit" mat-raised-button color="primary" (click)="save()">Save</button>

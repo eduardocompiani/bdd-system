@@ -1,0 +1,11 @@
+button {
+  margin-top: 10px;
+}
+
+button[type='submit'] {
+  margin-left: 8px;
+}
+
+mat-form-field {
+  width: 100%;
+}

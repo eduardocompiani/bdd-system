@@ -14,7 +14,7 @@
         <button mat-menu-item (click)="drawer.toggle()">Invite</button>
       </mat-menu>
       <a mat-list-item (click)="drawer.toggle()" routerLink="/folder">Folders</a>
-      <a mat-list-item (click)="drawer.toggle()">Scenario</a>
+      <a mat-list-item (click)="drawer.toggle()" routerLink="/scenario">Scenario</a>
       <a mat-list-item (click)="onLogout(drawer)">Log Out</a>
     </mat-nav-list>
     <mat-nav-list *ngIf="!auth.isLoggedIn">
