@@ -1,0 +1,14 @@
+<mat-card class="container">
+  <button mat-raised-button color="primary" (click)="createNewScenario()">New</button>
+  <mat-list>
+    <mat-list-item *ngFor="let scenario of scenarios | async">
+      <a mat-line>{{ scenario.name }}</a>
+      <button mat-icon-button (click)="edit(scenario)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button (click)="delete(scenario)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-list-item>
+  </mat-list>
+</mat-card>

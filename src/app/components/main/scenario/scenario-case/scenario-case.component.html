@@ -1,0 +1,24 @@
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      Case {{index}}
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+
+  <mat-form-field>
+    <textarea matInput placeholder="Given" [(ngModel)]="scenarioCase.testGiven"></textarea>
+  </mat-form-field>
+
+  <mat-form-field>
+    <textarea matInput placeholder="When" [(ngModel)]="scenarioCase.testWhen"></textarea>
+  </mat-form-field>
+
+  <mat-form-field>
+    <textarea matInput placeholder="Then" [(ngModel)]="scenarioCase.testThen"></textarea>
+  </mat-form-field>
+
+  <mat-action-row>
+    <button mat-button color="warn" (click)="senDeleteAction()">Delete this case</button>
+  </mat-action-row>
+
+</mat-expansion-panel>

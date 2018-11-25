@@ -22,6 +22,11 @@ import { FolderListComponent } from './components/main/folder/folder-list/folder
 import { FolderFormComponent } from './components/main/folder/folder-form/folder-form.component';
 import { FolderEditComponent } from './components/main/folder/folder-edit/folder-edit.component';
 import { FolderCreateComponent } from './components/main/folder/folder-create/folder-create.component';
+import { ScenarioCaseComponent } from './components/main/scenario/scenario-case/scenario-case.component';
+import { ScenarioCreateComponent } from './components/main/scenario/scenario-create/scenario-create.component';
+import { ScenarioEditComponent } from './components/main/scenario/scenario-edit/scenario-edit.component';
+import { ScenarioListComponent } from './components/main/scenario/scenario-list/scenario-list.component';
+import { ScenarioFormComponent } from './components/main/scenario/scenario-form/scenario-form.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +39,12 @@ import { FolderCreateComponent } from './components/main/folder/folder-create/fo
     FolderListComponent,
     FolderFormComponent,
     FolderEditComponent,
-    FolderCreateComponent
+    FolderCreateComponent,
+    ScenarioCaseComponent,
+    ScenarioCreateComponent,
+    ScenarioEditComponent,
+    ScenarioListComponent,
+    ScenarioFormComponent
   ],
   imports: [
     BrowserModule,
