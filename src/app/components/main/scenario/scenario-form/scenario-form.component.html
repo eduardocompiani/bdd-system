@@ -3,7 +3,7 @@
 </mat-form-field>
 
 <mat-form-field>
-  <mat-select placeholder="Folder">
+  <mat-select placeholder="Folder" [(value)]="scenario.folder">
     <mat-option *ngFor="let folder of folders | async" [value]="folder.oid">
       {{folder.name}}
     </mat-option>

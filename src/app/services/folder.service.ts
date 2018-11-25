@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {FolderInterface} from '../interfaces/folder-interface';
 import {AngularFirestore, AngularFirestoreCollection} from 'angularfire2/firestore';
-import {map} from 'rxjs/operators';
+import {ServiceUtils} from '../utils/service-utils';
 
 @Injectable({
   providedIn: 'root'
@@ -9,41 +9,28 @@ import {map} from 'rxjs/operators';
 export class FolderService {
   folderCollection: AngularFirestoreCollection<FolderInterface>;
 
-  constructor(private afs: AngularFirestore) {
+  constructor(private afs: AngularFirestore,
+              private serviceUtils: ServiceUtils) {
     this.folderCollection = this.afs.collection('folders');
   }
 
   getList() {
-    return this.folderCollection.snapshotChanges().pipe(
-      map(actions => {
-        return actions.map( a => {
-          return a.payload.doc.data();
-        });
-      })
-    );
+    return this.serviceUtils.getList(this.folderCollection);
   }
 
   getByUid(uid: string) {
-    return this.folderCollection.doc(uid).snapshotChanges().pipe(
-      map(res => {
-        return res.payload.data();
-      })
-    );
+    return this.serviceUtils.getByOid(this.folderCollection, uid);
   }
 
   create(folder: FolderInterface) {
-    folder.oid = this.afs.createId();
-    this.update(folder);
+    this.serviceUtils.create(folder, this.folderCollection);
   }
 
   update(folder: FolderInterface) {
-    this.folderCollection.doc(folder.oid).set({
-      'oid': folder.oid,
-      'name': folder.name
-    });
+    this.serviceUtils.update(folder, this.folderCollection);
   }
 
   delete(folder: FolderInterface) {
-    this.folderCollection.doc(folder.oid).delete();
+    this.serviceUtils.delete(folder, this.folderCollection);
   }
 }
