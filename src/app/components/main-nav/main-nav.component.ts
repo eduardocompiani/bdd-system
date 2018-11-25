@@ -18,7 +18,7 @@ export class MainNavComponent {
     );
 
   constructor(private breakpointObserver: BreakpointObserver,
-              private auth: AuthService) {}
+              public auth: AuthService) {}
 
     onLogout(drawer: any) {
       drawer.toggle();
