@@ -14,5 +14,5 @@
   <app-scenario-case *ngFor="let case of scenario.cases; let i = index" [index]="i + 1" [(scenarioCase)]="scenario.cases[i]" (onDelete)="deleteCase($event)"></app-scenario-case>
 </mat-accordion>
 
-<button type="button" mat-raised-button color="primary" (click)="addCase()">New case</button>
-<button type="submit" mat-raised-button color="primary" (click)="save()">Save</button>
+<button *ngIf="editable" type="button" mat-raised-button color="primary" (click)="addCase()">New case</button>
+<button *ngIf="editable" type="submit" mat-raised-button color="primary" (click)="emitSave()">Save</button>
