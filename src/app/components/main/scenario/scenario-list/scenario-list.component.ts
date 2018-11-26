@@ -25,7 +25,7 @@ export class ScenarioListComponent implements OnInit {
   }
 
   createNewScenario() {
-    this.router.navigate(['/team/create/']);
+    this.router.navigate(['/scenario/create/']);
   }
 
   edit(scenario: ScenarioInterface) {
